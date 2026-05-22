@@ -1,9 +1,6 @@
 name: Data Pipeline
 
 on:
-  schedule:
-    - cron: '0 9 * * *'
-
   workflow_dispatch:
 
 jobs:
@@ -14,6 +11,9 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: List files
+        run: ls -la
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -27,5 +27,4 @@ jobs:
           pip install fredapi
 
       - name: Run pipeline
-        run: python pipeline.py
-        
+        run: python ./pipeline.py
